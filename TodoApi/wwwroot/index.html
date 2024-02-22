@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hava Durumu</title>
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>5 Günlük Hava Durumu</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tarih</th>
+                <th>Sıcaklık</th>
+                <th>Açıklama</th>
+            </tr>
+        </thead>
+        <tbody id="weatherTableBody"></tbody>
+    </table>
+
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        //fetch("/api/HavaDurumu")
+        //    .then(res => res.json())
+        //    .then(data => {
+        //        console.table(data);
+        //    });
+        fetch("/api/HavaDurumu")
+            .then(res => res.json())
+            .then(data => {
+                for (const gun of data) {
+                    document.getElementById("weatherTableBody").innerHTML +=
+                        `<tr>
+                                <td>${gun.tarih}</td>
+                                <td>${gun.sicaklik} °C</td>
+                                <td>${gun.aciklama}</td>
+                        </tr>`;
+                }
+            })
+    </script>
+</body>
+</html>
+
+    <!--/*.then(data => {*/
+    /*    const tableBody = document.getE*/lementById("weatherTableBody");
+
+    /*    data.forEach(day => {*/
+    /*        const row = document.create*/Element("tr");
+
+    /*        const tarihCell = document.*/createElement("td");
+    /*        tarihCell.textContent = day*/.tarih;
+    /*        row.appendChild(tarihCell);*/
+
+    /*        const sicaklikCell = docume*/nt.createElement("td");
+    /*        sicaklikCell.textContent = */day.sicaklik + " °C";
+    /*        row.appendChild(sicaklikCel*/l);
+
+    /*        const aciklamaCell = docume*/nt.createElement("td");
+    /*        aciklamaCell.textContent = */day.aciklama;
+    /*        row.appendChild(aciklamaCel*/l);
+
+    /*        tableBody.appendChild(row);*/
+    /*    });*/
+/*});*/-->
